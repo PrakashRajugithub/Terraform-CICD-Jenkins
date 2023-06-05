@@ -18,5 +18,5 @@
 
 resource "aws_key_pair" "CICD" {
   key_name   = "CICD-key"
-  public_key =  file("${path.module}/id_rsa.pub")
+  public_key = file("${path.module}/id_rsa.pub")
 }
