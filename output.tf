@@ -6,33 +6,17 @@
 # ################################################
 
 output "CICDpubIP" {
-  value = aws_instance.CICD.public_ip
-}
+    value = aws_instance.CICD.public_ip
+  }
 
 output "apachepubIP" {
-  value = aws_instance.apache.public_ip
-}
+    value = aws_instance.apache.public_ip
+  }
 
-output "CICDdns" {
-  value = aws_instance.CICD.public_dns
-}
+  output "CICDdns" {
+    value = aws_instance.CICD.public_dns
+  }
 
 output "apachedns" {
-  value = aws_instance.apache.public_dns
-}
-
-# Output "CICDStartStatus"{
-#   value = aws_ec2_instance_state.JenkinsStartStop.start.id
-# }
-
-#  Output "CICDStopStatus"{
-#   value = aws_ec2_instance_state.JenkinsStartStop.stopped.id
-# }
-
-# Output "apacheStartStatus"{
-#   value = aws_ec2_instance_state.apache.start.id
-#     }
-
-#  Output "apacheStopStatus"{
-#   value = aws_ec2_instance_state.JenkinsStartStop.stopped.id
-# }
+    value = aws_instance.apache.public_dns
+  }
