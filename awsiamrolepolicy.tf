@@ -1,7 +1,7 @@
 # role
 
-resource "aws_iam_role" "jenkins_access_storage" {
-  name = "jenkins_access_storage"
+resource "aws_iam_role" "accessjenkinstostorage" {
+  name = "accessjenkinstostorage"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -26,9 +26,9 @@ resource "aws_iam_role" "jenkins_access_storage" {
 
 # policy
 
-resource "aws_iam_role_policy" "jenkins_access_storage" {
-  name = "jenkins_access_storage"
-  role = aws_iam_role.jenkins_access_storage.id
+resource "aws_iam_role_policy" "accessjenkinstostorage" {
+  name = "accessjenkinstostorage"
+  role = aws_iam_role.accessjenkinstostorage.id
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -45,23 +45,28 @@ resource "aws_iam_role_policy" "jenkins_access_storage" {
     ]
   })
 
-#   tags = {
-#     Name      = "EC2toS3Policy"
-#     Terraform = "True"
-#   }
+  #   tags = {
+  #     Name      = "EC2toS3Policy"
+  #     Terraform = "True"
+  #   }
 
 }
 
 # attach policy to role
 
-resource "aws_iam_role_policy_attachment" "jenkins_access_storage" {
-  role       = aws_iam_role.jenkins_access_storage.name
-  policy_arn = aws_iam_role.jenkins_access_storage.arn
-}
+# resource "aws_iam_role_policy_attachment" "accessjenkinstostorage" {
+#   role       = aws_iam_role.accessjenkinstostorage.name
+#   policy_arn = aws_iam_role.accessjenkinstostorage.arn
+# }
 
-# attach role to EC2
+#  resource "aws_iam_role_policy_attachment" "accessjenkinstostorage" {
+#    role       = aws_iam_role.accessjenkinstostorage.name
+#    policy_arn = aws_iam_role.accessjenkinstostorage.arn
+#  }
 
-resource "aws_iam_instance_profile" "jenkins_access_storage" {
-  name = "jenkins_access_storage"
-  role = aws_iam_role.jenkins_access_storage.name
+#  attach role to EC2
+
+resource "aws_iam_instance_profile" "accessjenkinstostorage" {
+  name = "accessjenkinstostorage"
+  role = aws_iam_role.accessjenkinstostorage.name
 }
