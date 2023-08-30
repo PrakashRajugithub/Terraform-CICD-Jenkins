@@ -1,8 +1,8 @@
 resource "aws_security_group" "apache" {
   name        = "allow apache"
   description = "Allow apache inbound traffic"
-  vpc_id      = "vpc-0e0816654f0c2ab68"
-  #  above VPC I given is Default vpc. We can get our own vpc by Data Source.
+  vpc_id      = "vpc-0beef6e74f5f1743b"
+  #  above VPC I have given Default vpc. We can get our own vpc by Data Source.
 
   ingress {
     description = "apache"
@@ -21,6 +21,16 @@ resource "aws_security_group" "apache" {
     cidr_blocks = ["0.0.0.0/0"]
 
   }
+
+  ingress {
+    description = "tomcat"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -36,9 +46,10 @@ resource "aws_security_group" "apache" {
 }
 
 resource "aws_instance" "apache" {
-  ami                    = "ami-02b2e78e9b867ffec"
-  instance_type          = "t2.xlarge"
-  subnet_id              = "subnet-0136d87b6080f279a"
+  # ami                    = "ami-02b2e78e9b867ffec"
+  ami                    = "ami-06b79cf2aee0d5c92"
+  instance_type          = "t2.large"
+  subnet_id              = "subnet-0ed96177820e6b27c"
   vpc_security_group_ids = [aws_security_group.apache.id]
   key_name               = aws_key_pair.CICD.id
   # user_data = file("${path.module}/apache_install.sh")
@@ -48,7 +59,7 @@ resource "aws_instance" "apache" {
               yum install httpd -y
               systemctl start httpd
               systemctl enable httpd
-              #amazon-linux-extras install java-openjdk11
+              amazon-linux-extras install java-openjdk11
               EOF
 
 
@@ -69,6 +80,6 @@ resource "aws_instance" "apache" {
 }
 
 resource "aws_ec2_instance_state" "apache" {
-    instance_id = aws_instance.apache.id
-    state       = "running"
-  }
+  instance_id = aws_instance.apache.id
+  state       = "stopped"
+}

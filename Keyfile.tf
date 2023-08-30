@@ -9,7 +9,7 @@
 # METHOD-2(i) -- We can add the entire key file in separate file and calling that file to here using below line.
 # ===========
 #  <-- public_key =  file("${path.module}/id_rsa.pub")  -->
-#  Here Path Module is the file location of file. 
+#  Here Path Module is the location of file. 
 #  In the place of "/id_rsa.pub" we can give any file like ".txt" file also. Here in this example we have   given RSA key.
 
 #  METHOD-2(ii) -- Instead of "${path.module}/" we give the entire path as below.
