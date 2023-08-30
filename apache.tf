@@ -81,5 +81,5 @@ resource "aws_instance" "apache" {
 
 resource "aws_ec2_instance_state" "apache" {
   instance_id = aws_instance.apache.id
-  state       = "stopped"
+  state       = "running"
 }

@@ -83,7 +83,7 @@ resource "aws_instance" "CICD" {
 
 resource "aws_ec2_instance_state" "CICD" {
   instance_id = aws_instance.CICD.id
-  state       = "stopped"
+  state       = "running"
 }
 
 # The aboove resource (i.e.,aws_ec2_instance_state) should be create separately and should not create inside of the other Resource.
