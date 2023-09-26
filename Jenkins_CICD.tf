@@ -1,7 +1,7 @@
 resource "aws_security_group" "CICD" {
   name        = "allow CICD"
   description = "Allow CICD inbound traffic"
-  vpc_id      = "vpc-0beef6e74f5f1743b"
+  vpc_id      = "vpc-07ccf75c194ce2ca2"
   #  above VPC I given is Default vpc. We can get our own vpc by Data Source.
 
   ingress {
@@ -46,9 +46,9 @@ resource "aws_security_group" "CICD" {
 
 resource "aws_instance" "CICD" {
   # ami                    = "ami-02b2e78e9b867ffec"
-  ami                    = "ami-06b79cf2aee0d5c92"
+  ami                    = "ami-0eeadc4ab092fef70"
   instance_type          = "t2.large"
-  subnet_id              = "subnet-0ed96177820e6b27c"
+  subnet_id              = "subnet-0de6fc8b5c961839c"
   vpc_security_group_ids = [aws_security_group.CICD.id]
   iam_instance_profile   = aws_iam_instance_profile.accessjenkinstostorage.name
   key_name               = aws_key_pair.CICD.id
@@ -83,7 +83,7 @@ resource "aws_instance" "CICD" {
 
 resource "aws_ec2_instance_state" "CICD" {
   instance_id = aws_instance.CICD.id
-  state       = "running"
+  state       = "stopped"
 }
 
 # The aboove resource (i.e.,aws_ec2_instance_state) should be create separately and should not create inside of the other Resource.
