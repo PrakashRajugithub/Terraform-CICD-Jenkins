@@ -1,7 +1,7 @@
 resource "aws_security_group" "apache" {
   name        = "allow apache"
   description = "Allow apache inbound traffic"
-  vpc_id      = "vpc-0beef6e74f5f1743b"
+  vpc_id      = "vpc-07ccf75c194ce2ca2"
   #  above VPC I have given Default vpc. We can get our own vpc by Data Source.
 
   ingress {
@@ -47,9 +47,9 @@ resource "aws_security_group" "apache" {
 
 resource "aws_instance" "apache" {
   # ami                    = "ami-02b2e78e9b867ffec"
-  ami                    = "ami-06b79cf2aee0d5c92"
+  ami                    = "ami-0eeadc4ab092fef70"
   instance_type          = "t2.large"
-  subnet_id              = "subnet-0ed96177820e6b27c"
+  subnet_id              = "subnet-0de6fc8b5c961839c"
   vpc_security_group_ids = [aws_security_group.apache.id]
   key_name               = aws_key_pair.CICD.id
   # user_data = file("${path.module}/apache_install.sh")
@@ -81,5 +81,5 @@ resource "aws_instance" "apache" {
 
 resource "aws_ec2_instance_state" "apache" {
   instance_id = aws_instance.apache.id
-  state       = "running"
+  state       = "stopped"
 }
