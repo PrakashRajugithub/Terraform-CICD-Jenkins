@@ -14,7 +14,7 @@
 
 #  METHOD-2(ii) -- Instead of "${path.module}/" we give the entire path as below.
 # ==============
-#   Ex:- public_key = file("C:/Users/username/Terraform/id_rsa.pub")
+#   Ex:-  public_key = file("C:/Users/username/Terraform/id_rsa.pub")
 
 resource "aws_key_pair" "CICD" {
   key_name   = "CICD-key"
