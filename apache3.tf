@@ -1,6 +1,6 @@
-resource "aws_security_group" "apache" {
-  name        = "allow apache"
-  description = "Allow apache inbound traffic"
+resource "aws_security_group" "apache3" {
+  name        = "allow apache3"
+  description = "Allow apache3 inbound traffic"
   vpc_id      = "vpc-07ccf75c194ce2ca2"
   #  above VPC I have given Default vpc. We can get our own vpc by Data Source.
 
@@ -45,11 +45,11 @@ resource "aws_security_group" "apache" {
   }
 }
 
-resource "aws_instance" "apache" {
+resource "aws_instance" "apache3" {
   # ami                    = "ami-02b2e78e9b867ffec"
   ami                    = "ami-0d9efc67b4e551155"
   instance_type          = "t2.micro"
-  subnet_id              = "subnet-0de6fc8b5c961839c"
+  subnet_id              = "subnet-078a85b6ff2ae26f8"
   vpc_security_group_ids = [aws_security_group.apache.id]
   key_name               = aws_key_pair.CICD.id
   # user_data = file("${path.module}/apache_install.sh")
@@ -75,7 +75,7 @@ resource "aws_instance" "apache" {
   # For Userdata also I have done the same as for Key file calling the file using Path Module.
 
   tags = {
-    Name      = "CICD-apache"
+    Name      = "CICD-apache3"
     Terraform = "True"
   }
 
@@ -85,7 +85,7 @@ resource "aws_instance" "apache" {
 
 }
 
-resource "aws_ec2_instance_state" "apache" {
-  instance_id = aws_instance.apache.id
+resource "aws_ec2_instance_state" "apache3" {
+  instance_id = aws_instance.apache3.id
   state       = "stopped"
 }

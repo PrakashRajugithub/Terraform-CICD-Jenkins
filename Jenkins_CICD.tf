@@ -46,7 +46,7 @@ resource "aws_security_group" "CICD" {
 
 resource "aws_instance" "CICD" {
   # ami                    = "ami-02b2e78e9b867ffec"
-  ami                    = "ami-0eeadc4ab092fef70"
+  ami                    = "ami-0d9efc67b4e551155"
   instance_type          = "t2.large"
   subnet_id              = "subnet-0de6fc8b5c961839c"
   vpc_security_group_ids = [aws_security_group.CICD.id]
