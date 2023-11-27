@@ -33,21 +33,21 @@ output "aws_account_number" {
   value = data.aws_caller_identity.current.account_id
 }
 
-output "apache2pubIP" {
-  value = aws_instance.apache2.public_ip
-}
+# output "apache2pubIP" {
+#   value = aws_instance.apache2.public_ip
+# }
 
-output "apache2pvtIP" {
-  value = aws_instance.apache2.private_ip
-}
+# output "apache2pvtIP" {
+#   value = aws_instance.apache2.private_ip
+# }
 
-output "apache3pubIP" {
-  value = aws_instance.apache3.public_ip
-}
+# output "apache3pubIP" {
+#   value = aws_instance.apache3.public_ip
+# }
 
-output "apache3pvtIP" {
-  value = aws_instance.apache3.private_ip
-}
+# output "apache3pvtIP" {
+#   value = aws_instance.apache3.private_ip
+# }
 
 # Output "CICDStartStatus"{
 #   value = aws_ec2_instance_state.JenkinsStartStop.start.id

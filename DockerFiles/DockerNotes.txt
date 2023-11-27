@@ -1,0 +1,6 @@
+Issue1:- Docker image url was not working in browser.
+
+After building & running docker httpd/apache image with a port I got an error in web browser "This site can’t be reached".
+Initially I have made the configurations of port in container as "containerport:apacheport"(i.e., 10000:80) but when i tried in browser using url (i.e., http://HostIP:containerport). It doesn't work.
+I tried localhost testing in Host server and it was working fine.(curl -I http://localhost:containerport)
+Then i Configured/whitelisted the container port 10000 in SG. Then I got success in Browser as well.

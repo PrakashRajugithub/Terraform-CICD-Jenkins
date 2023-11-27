@@ -1,7 +1,7 @@
 resource "aws_security_group" "CICD" {
   name        = "allow CICD"
   description = "Allow CICD inbound traffic"
-  vpc_id      = "vpc-07ccf75c194ce2ca2"
+  vpc_id      = "vpc-00033bc2195cf6520"
   #  above VPC I given is Default vpc. We can get our own vpc by Data Source.
 
   ingress {
@@ -17,6 +17,15 @@ resource "aws_security_group" "CICD" {
     description = "Alb-CICD"
     from_port   = 8080
     to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+
+  ingress {
+    description = "allow-apache"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
 
@@ -46,9 +55,9 @@ resource "aws_security_group" "CICD" {
 
 resource "aws_instance" "CICD" {
   # ami                    = "ami-02b2e78e9b867ffec"
-  ami                    = "ami-0d9efc67b4e551155"
+  ami                    = "ami-02453f5468b897e31"
   instance_type          = "t2.large"
-  subnet_id              = "subnet-0de6fc8b5c961839c"
+  subnet_id              = "subnet-012eec82a999af6d5"
   vpc_security_group_ids = [aws_security_group.CICD.id]
   iam_instance_profile   = aws_iam_instance_profile.accessjenkinstostorage.name
   key_name               = aws_key_pair.CICD.id

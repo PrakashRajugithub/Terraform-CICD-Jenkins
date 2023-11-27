@@ -1,8 +1,8 @@
-resource "aws_s3_bucket" "jenkins-pkg1-artifactory-oct2023" {
-  bucket = "jenkins-pkg1-artifactory-oct2023"
+resource "aws_s3_bucket" "jenkins-pkg2-artifactory-nov2023" {
+  bucket = "jenkins-pkg2-artifactory-nov2023"
 
   tags = {
-    Name      = "jenkins-pkg1-artifactory-oct2023"
+    Name      = "jenkins-pkg2-artifactory-nov2023"
     Terraform = "True"
   }
 }
